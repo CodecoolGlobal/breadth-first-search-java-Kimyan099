@@ -65,6 +65,46 @@ public class BFSExample {
                 && currentNode.getLastName().equals(searchedNode.getLastName());
     }
 
+    private static Set<UserNode> getFriendsAtGivenDistance(UserNode starterUser, int distance) {
+        Set<UserNode> friends = new HashSet<>();
+        Queue<UserNode> notVisitedQueue = new LinkedList<>();
+        Queue<UserNode> visitedQueue = new LinkedList<>();
+        int depth = 0;
+        notVisitedQueue.add(starterUser);
+
+        while(depth < distance) {
+            int numberOfNodes = notVisitedQueue.size();
+            while(numberOfNodes != 0) {
+                UserNode currentNode = notVisitedQueue.element();
+                Set<UserNode> currentFriends = currentNode.getFriends();
+                for (UserNode currentFriend : currentFriends) {
+                    notVisitedQueue.add(currentFriend);
+                    if(depth + 1 == distance && !isCurrentFriendVisited(currentFriend, visitedQueue)) {
+                        friends.add(currentFriend);
+                    }
+                }
+                UserNode visitedNode = notVisitedQueue.poll();
+                visitedQueue.add(visitedNode);
+                numberOfNodes--;
+            }
+            depth++;
+        }
+        return friends;
+    }
+
+    private static boolean isCurrentFriendVisited(UserNode currentFriend, Queue<UserNode> visitedQueue) {
+        boolean isVisited = false;
+        for (UserNode userNode : visitedQueue) {
+            if (userNode.equals(currentFriend)) {
+                isVisited = true;
+            }
+        }
+        return isVisited;
+    }
+
+
+
+
 
 
 
