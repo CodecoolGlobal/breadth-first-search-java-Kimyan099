@@ -107,43 +107,43 @@ public class BFSExample {
         return isVisited;
     }
 
-//    private static List<List<UserNode>> getPathsBetween(UserNode starterUser, UserNode searchedUser) {
-//        List<List<UserNode>> pathList = new ArrayList<>();
-//        List<UserNode> nodeList = new ArrayList<>();
-//        Queue<UserNode> nodeQueue = new LinkedList<>();
-//        int depth = 0;
-//
-//        nodeQueue.add(starterUser);
-//
-//        while (!nodeQueue.isEmpty()) {
-//            int numberOfNodes = nodeQueue.size();
-//
-//            while (numberOfNodes != 0) {
-//                UserNode currentNode = nodeQueue.element();
-//                if (isMatch(currentNode, searchedUser)) {
-//                    depth++;
-//                    nodeList.add(currentNode);
-//                    pathList.add(nodeList);
-//                    return pathList;
-//                }
-//                Set<UserNode> currentFriends = currentNode.getFriends();
-//                for (UserNode currentFriend : currentFriends) {
-//                    if (isMatch(currentFriend, searchedUser)) {
-//                        depth++;
-//                        nodeList.add(currentFriend);
-//                        pathList.add(nodeList);
-//                        return pathList;
-//                    }
-//                    nodeQueue.add(currentFriend);
-//                }
-//                numberOfNodes--;
-//                nodeQueue.poll();
-//            }
-//            depth++;
-//        }
-//        System.out.println("Friend not found");
-//        return pathList;
-//    }
+    private static List<List<UserNode>> getPathsBetween(UserNode starterUser, UserNode searchedUser) {
+        List<List<UserNode>> pathList = new ArrayList<>();
+        List<UserNode> nodeList = new ArrayList<>();
+        Queue<UserNode> nodeQueue = new LinkedList<>();
+        int depth = 0;
+
+        nodeQueue.add(starterUser);
+
+        while (!nodeQueue.isEmpty()) {
+            int numberOfNodes = nodeQueue.size();
+
+            while (numberOfNodes != 0) {
+                UserNode currentNode = nodeQueue.element();
+                if (isMatch(currentNode, searchedUser)) {
+                    depth++;
+                    nodeList.add(currentNode);
+                    pathList.add(nodeList);
+                    return pathList;
+                }
+                Set<UserNode> currentFriends = currentNode.getFriends();
+                for (UserNode currentFriend : currentFriends) {
+                    if (isMatch(currentFriend, searchedUser)) {
+                        depth++;
+                        nodeList.add(currentFriend);
+                        pathList.add(nodeList);
+                        return pathList;
+                    }
+                    nodeQueue.add(currentFriend);
+                }
+                numberOfNodes--;
+                nodeQueue.poll();
+            }
+            depth++;
+        }
+        System.out.println("Friend not found");
+        return pathList;
+    }
 
 
 
