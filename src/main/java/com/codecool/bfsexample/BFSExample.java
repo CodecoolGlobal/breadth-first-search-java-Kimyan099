@@ -20,10 +20,10 @@ public class BFSExample {
         Set<UserNode> starter = new HashSet<>(Arrays.asList(starterUser));
         int distance = calculateMinimumDistance(starterUser, searchedUser);
         Set<UserNode> friends = getFriendsAtGivenDistance(starterUser,2);
-//        List<List<UserNode>> paths = getPathsBetween(starterUser, searchedUser);
+
 
         graphPlotter.highlightNodes(starter, searchedUser);
-//        graphPlotter.highlightRoute(paths);
+
 
         System.out.println(starterUser + "friends are: " +friends);
         System.out.println(distance);
